@@ -6,12 +6,12 @@ Mail Service <br>
 Order Service <br>
 SendCompletedOrderMail <br>
 
-Introduction:
-I set up the project according to Onion Architecture. I set the layers according to this architecture. I created Customer, Product and Order entities and created EcommerceAPIDb database and tables with Code-First migration commands. I wrote crud methods over Read and Write Repositories. I used IoC Container.
-Development:
-I created Customers, Products and Orders Controller and performed request operations to db via swagger. I created the Mail Service structure. I checked the mail sending with smtp. I created the ‘Orders/SendCompletedOrderMail’ endpoint. I added the ‘IsOrdered’ bool variable to the Orders table and checked the ‘created order’ from the db. I filled the mail content by writing a query by taking the Customer and Product information about this order from the repository.
-Result:
-I took a screenshot of the ‘Order created’ mail content. I both sent the changes in the code to github as I progressed and shared the mail content in the ReadMe file.
+Introduction:<br>
+I set up the project according to Onion Architecture. I set the layers according to this architecture. I created Customer, Product and Order entities and created EcommerceAPIDb database and tables with Code-First migration commands. I wrote crud methods over Read and Write Repositories. I used IoC Container.<br>
+Development:<br>
+I created Customers, Products and Orders Controller and performed request operations to db via swagger. I created the Mail Service structure. I checked the mail sending with smtp. I created the ‘Orders/SendCompletedOrderMail’ endpoint. I added the ‘IsOrdered’ bool variable to the Orders table and checked the ‘created order’ from the db. I filled the mail content by writing a query by taking the Customer and Product information about this order from the repository.<br>
+Result:<br>
+I took a screenshot of the ‘Order created’ mail content. I both sent the changes in the code to github as I progressed and shared the mail content in the ReadMe file.<br>
 
 <strong>Used Technologies:</strong> <br>
 .Net 8.0 Web API <br>
