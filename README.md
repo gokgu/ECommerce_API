@@ -6,7 +6,7 @@ Mail Service <br>
 Order Service <br>
 SendCompletedOrderMail <br>
 
-Used Technologies: <br>
+<strong>Used Technologies:</strong> <br>
 .Net 8.0 Web API <br>
 MSSQL Database <br>
 ORM Tool EntityFrameworkCore Code First Migration Commands <br>
