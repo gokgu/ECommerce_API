@@ -9,10 +9,11 @@ namespace ECommerceAPI.Domain.Entities;
 
 public class Order : BaseEntity
 {
-    public int CustomerId { get; set; }
+    public Guid CustomerId { get; set; }
     public string Description { get; set; } = string.Empty;
     public string Address { get; set; } = string.Empty;
+    public bool IsOrdered { get; set; }
 
-    public ICollection<Product> Products { get; set; } = new List<Product>();
-    public Customer Customer { get; set; } = new Customer();
+    public ICollection<Product> Products { get; set; }
+    public Customer Customer { get; set; }
 }

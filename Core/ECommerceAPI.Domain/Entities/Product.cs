@@ -12,6 +12,5 @@ public class Product : BaseEntity
     public string Name { get; set; } = string.Empty;
     public int Quantity { get; set; }
     public long Price { get; set; }
-    public bool IsOrdered { get; set; }
-    public ICollection<Order> Orders { get; set; } = new List<Order>();
+    public ICollection<Order> Orders { get; set; }
 }

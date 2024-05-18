@@ -1,8 +1,10 @@
 using ECommerceAPI.Persistence;
+using ECommerceAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPersistenceServices();
+builder.Services.AddInfrastructureServices();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
