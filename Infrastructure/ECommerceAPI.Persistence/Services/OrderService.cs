@@ -15,21 +15,31 @@ public class OrderService : IOrderService
 {
     readonly IOrderReadRepository _orderReadRepository;
     readonly ICustomerReadRepository _customerReadRepository;
+    readonly IProductReadRepository _productReadRepository;
     readonly IMailService _mailService;
 
-    public OrderService(IOrderReadRepository orderReadRepository, IMailService mailService)
+    public OrderService(IOrderReadRepository orderReadRepository, ICustomerReadRepository customerReadRepository, IProductReadRepository productReadRepository, IMailService mailService)
     {
         _orderReadRepository = orderReadRepository;
+        _customerReadRepository = customerReadRepository;
+        _productReadRepository = productReadRepository;
         _mailService = mailService;
     }
 
-    public async Task GetCompleteOrder()
+    public async Task GetCompletedOrder()
     {
-        //var order =  _orderReadRepository.GetByIdAsync("A6EA82F9-407D-4D22-3906-08DC773E405E");
+        var order = await _orderReadRepository.Table.Include(o => o.Products).FirstOrDefaultAsync(p => p.IsOrdered == true) ?? new();
 
-        var order = await _orderReadRepository.Table.Include(o => o.Products).FirstOrDefaultAsync(p => p.IsOrdered == true);
-        var customer = await _customerReadRepository.Table.FirstOrDefaultAsync(c => c.Id == order.CustomerId);
+        var customer = await _customerReadRepository.Table.FirstOrDefaultAsync(c => c.Id == order.CustomerId) ?? new();
 
-        _mailService.SendCompletedOrderMailAsync(customer.Email, customer.Name, order.Id.ToString(), order.CreatedDate, order.Products.FirstOrDefault());
+        if (order != null && customer != null) 
+            await _mailService.SendCompletedOrderMailAsync(customer.Email, customer.Name, 
+                order.Id.ToString(), order.CreatedDate, order.Products.FirstOrDefault() ?? new());
+    }
+
+    public async Task<Order> GetOrder(string id)
+    {
+        var order =  await _orderReadRepository.GetByIdAsync(id);
+        return order;
     }
 }

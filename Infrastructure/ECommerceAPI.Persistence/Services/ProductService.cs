@@ -1,5 +1,7 @@
 ﻿using ECommerceAPI.Application.Abstractions.Services;
+using ECommerceAPI.Application.Repositories;
 using ECommerceAPI.Domain.Entities;
+using ECommerceAPI.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +12,16 @@ namespace ECommerceAPI.Persistence.Concretes;
 
 public class ProductService : IProductService
 {
+    readonly IProductReadRepository _produtReadRepository;
+
+    public ProductService(IProductReadRepository produtReadRepository)
+    {
+        _produtReadRepository = produtReadRepository;
+    }
+
     public List<Product> GetProducts()
-        => new()
-        {
-            new() { Id = Guid.NewGuid(), Name = "Product 1", Quantity =10, Price = 100},
-            new() { Id = Guid.NewGuid(), Name = "Product 2", Quantity =10, Price = 200},
-            new() { Id = Guid.NewGuid(), Name = "Product 3", Quantity =10, Price = 300},
-            new() { Id = Guid.NewGuid(), Name = "Product 4", Quantity =10, Price = 400},
-            new() { Id = Guid.NewGuid(), Name = "Product 5", Quantity =10, Price = 500}
-        };
+    {
+        var products =  _produtReadRepository.GetAll().ToList();
+        return products.ToList();
+    }
 }

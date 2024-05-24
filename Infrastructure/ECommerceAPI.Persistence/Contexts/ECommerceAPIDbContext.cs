@@ -25,6 +25,7 @@ namespace ECommerceAPI.Persistence.Contexts
 
             var datas = ChangeTracker.Entries<BaseEntity>();
 
+            if (datas != null )
             foreach (var data in datas) 
             {
                 _ = data.State switch

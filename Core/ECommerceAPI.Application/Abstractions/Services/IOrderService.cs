@@ -9,6 +9,7 @@ namespace ECommerceAPI.Application.Abstractions.Services
 {
     public interface IOrderService
     {
-        public Task GetCompleteOrder();
+        Task GetCompletedOrder();
+        Task<Order> GetOrder(string id);
     }
 }

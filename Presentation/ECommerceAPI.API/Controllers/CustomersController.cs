@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceAPI.API.Controllers
 {
-    [Route("[controller]/AddCustomer")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
@@ -22,12 +21,13 @@ namespace ECommerceAPI.API.Controllers
             _customerReadRepository = customerReadRepository;
         }
 
-        [HttpGet]
-        public async Task Get()
-        {
-            var customerId = Guid.NewGuid();
-            await _customerWriteRepository.AddAsync(new() { Id = customerId, Name = "Ahmet Sağlam" });
-            await _customerWriteRepository.SaveAsync();
-        }
+        //[HttpPost]
+        //[Route("[controller]/Add")]
+        //public async Task Add()
+        //{
+        //    var customerId = Guid.NewGuid();
+        //    await _customerWriteRepository.AddAsync(new() { Id = customerId, Name = "Ahmet Sağlam" });
+        //    await _customerWriteRepository.SaveAsync();
+        //}
     }
 }

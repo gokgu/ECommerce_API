@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceAPI.API.Controllers
 {
-    [Route("[controller]/AddProduct")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
@@ -34,7 +33,29 @@ namespace ECommerceAPI.API.Controllers
             _orderWriteRepository = orderWriteRepository;
         }
 
-        //[HttpGet]
+        //[HttpPost]
+        //[Route("[controller]/Add")]
+        //public async Task Add()
+        //{
+        //    await _productWriteRepository.AddRangeAsync(new()
+        //    {
+        //        new() { Id = Guid.NewGuid(), Name = "Product 1", Quantity = 10, Price = 100, CreatedDate = DateTime.UtcNow},
+        //        new() { Id = Guid.NewGuid(), Name = "Product 2", Quantity = 20, Price = 200, CreatedDate = DateTime.UtcNow},
+        //        new() { Id = Guid.NewGuid(), Name = "Product 3", Quantity = 30, Price = 300, CreatedDate = DateTime.UtcNow},
+        //    });
+        //    await _productWriteRepository.SaveAsync();
+        //}
+
+        //[HttpPost]
+        //[Route("[controller]/Get/{id}")]
+        //public async Task<ActionResult> GetProduct(string id)
+        //{
+        //    Product product = await _productReadRepository.GetByIdAsync(id);
+        //    return Ok(product);
+        //}
+
+        //[HttpPost]
+        //[Route("[controller]/GetAll")]
         //public IActionResult GetProducts()
         //{
         //    var products = _productService.GetProducts();
@@ -46,32 +67,6 @@ namespace ECommerceAPI.API.Controllers
         //{
         //    await _mailService.SendMailAsync("ahmet.gokhan.gurel@gmail.com", "Örnek Mail", "<strong>Bu bir örnek maildir.</strong>");
         //    return Ok();
-        //}
-
-        [HttpGet]
-        public async Task Get()
-        {
-            await _productWriteRepository.AddRangeAsync(new()
-            {
-                new() { Id = Guid.NewGuid(), Name = "Product 1", Quantity = 10, Price = 100, CreatedDate = DateTime.UtcNow},
-                new() { Id = Guid.NewGuid(), Name = "Product 2", Quantity = 20, Price = 200, CreatedDate = DateTime.UtcNow},
-                new() { Id = Guid.NewGuid(), Name = "Product 3", Quantity = 30, Price = 300, CreatedDate = DateTime.UtcNow},
-            });
-            await _productWriteRepository.SaveAsync();
-
-            //var customerId = Guid.NewGuid();
-            //await _customerWriteRepository.AddAsync(new() { Id = customerId, Name = "Ahmet Sağlam" });
-
-            //await _orderWriteRepository.AddAsync(new() { Description = "Dummy 1", Address = "İstanbul, Çekmeköy", CustomerId = customerId, IsOrdered = true });
-            //await _orderWriteRepository.AddAsync(new() { Description = "Dummy 2", Address = "İstanbul, Kadıköy", CustomerId = customerId, IsOrdered = false });
-            //await _orderWriteRepository.SaveAsync();
-        }
-
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult> Get(string id)
-        //{
-        //    Product product = await _productReadRepository.GetByIdAsync(id);
-        //    return Ok(product);
         //}
     }
 }
